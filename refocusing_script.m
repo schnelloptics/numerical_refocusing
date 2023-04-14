@@ -22,16 +22,14 @@ crop_xy = [21,680,21,680];  % crop image after refocusing
 
 
 %% get image 
-% fname = 'reco_z0'; load(fname); amax = 2500; delta_z = 0*1e-6; symm_image  = 60/83; flag_amplitude = 1;
-% fname = 'reco_z20'; load(fname); amax = 700;  delta_z = -16.0*1e-6; symm_image = 60/83; flag_amplitude = 1; flag_amplitude = 1;
-fname = 'reco_z40';  load(fname); amax = 500;  delta_z = -40*1e-6; symm_image  = 62/83; linex = 157; linex2 = 540; flag_amplitude  = 1;
-% fname = 'reco_z60'; load(fname); amax = 300;  delta_z = -61*1e-6; symm_image  = 63.5/83; flag_amplitude = 1;
-% fname = 'reco_zm20'; load(fname); amax = 700;  delta_z = 23.5*1e-6; symm_image  = 64/83;  factorxyfoc = 1.1; flag_amplitude = 1;
+% fname = 'reco_z0'; load(fname); delta_z = 0*1e-6; symm_image  = 60/83; flag_amplitude = 1;
+% fname = 'reco_z20'; load(fname);  delta_z = -16.0*1e-6; symm_image = 60/83; flag_amplitude = 1; flag_amplitude = 1;
+fname = 'reco_z40';  load(fname);  delta_z = -40*1e-6; symm_image  = 62/83; linex = 157; linex2 = 540; flag_amplitude  = 1;
+% fname = 'reco_z60'; load(fname);  delta_z = -61*1e-6; symm_image  = 63.5/83; flag_amplitude = 1;
+% fname = 'reco_zm20'; load(fname); delta_z = 23.5*1e-6; symm_image  = 64/83;  flag_amplitude = 1;
 
-% fname = 'noninter_z40'; load(fname); jpk_reco = imrotate(jpk_reco, 1.3,'bilinear'); jpk_reco=jpk_reco(1:720,35:35+719); amax = 2000;  delta_z = 0; symm_image  = 62.4/83; yoffs = -12; 
-% fname = 'noninter_z0'; load(fname); jpk_reco = imrotate(jpk_reco, 1.3,'bilinear'); jpk_reco=jpk_reco(1:720,35:35+719); amax = 10000;  delta_z = 0; symm_image  = 62.4/83; yoffs = -12;  linex = 170; linex2 = 553;
-% fname = 'noninter_z0_100umph'; load(fname); jpk_reco=jpk_reco(1:720,1:720); amax = 10000;  delta_z = 0; symm_image  = 68/83; yoffs = -70; 
-% fname = 'noninter_z0_20umph'; load(fname); jpk_reco=jpk_reco(1:720,35:35+719);  amax = 10000;  delta_z = 0; symm_image  = 62.4/83; yoffs = -21;  linex = 162; linex2 = 547;
+% fname = 'noninter_z40'; load(fname); jpk_reco = imrotate(jpk_reco, 1.3,'bilinear'); jpk_reco=jpk_reco(1:720,35:35+719); delta_z = 0; symm_image  = 62.4/83; yoffs = -12; 
+% fname = 'noninter_z0'; load(fname); jpk_reco = imrotate(jpk_reco, 1.3,'bilinear'); jpk_reco=jpk_reco(1:720,35:35+719);  delta_z = 0; symm_image  = 62.4/83; yoffs = -12;  linex = 170; linex2 = 553;
   
 
 %% pre-process image 
@@ -97,7 +95,7 @@ mat_refocused = mat_refocused * conj(avg_phase);
 figure(1); clf;
 subplot(3,1,1); imagesc(abs(mat_image)); title('Original image, abs');
 subplot(3,1,2); imagesc(angle(mat_image)); title('Original image, angle');
-subplot(3,1,3); imagesc(angle(mat_image)); title('Window function');
+subplot(3,1,3); imagesc(abs(mat_window)); title('Window function');
 colormap 'gray';
 
 figure(2); clf;
